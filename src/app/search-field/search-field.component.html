@@ -1,23 +1,8 @@
 <div class="body-content">
   <div class="search-container">
-    <input [formControl]="searchField" type="text" placeholder="Write something" class="search-field" [value]="selectedOption">
+    <input [formControl]="searchField" type="text" placeholder="Write something" class="search-field" [value]="selectedValueFromDropdown">
 
-    <div class="dropdowm-container" *ngIf="titles.length !== 0 && isValueNotSelected" #dropdown>
-      <div class="title-block" [class.selected]="selectedOptionIndex === i" *ngFor="let title of titles; let i = index" (click)="selectValueOnMouseClick(i)">
-        <p #option class="title">{{title}}</p>
-        <hr>
-      </div>
-    </div>
-
-    <div class="no-results" *ngIf="isResultsNotFound">
-      <div class="no-results-block">
-        <p class="no-results-text">No results</p>
-      </div>
-    </div>
-
-    <div class="content-under-search-field">
-      <p class="text-under-search-field">Write to find something</p>
-    </div>
+    <dropdown [dropdownOptions]="options" (selectedOptionValue)="getSelectedValueFromDropdown($event)"></dropdown>
   </div>
 </div>
 

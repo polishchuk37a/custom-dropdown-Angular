@@ -1,0 +1,13 @@
+<div class="dropdown" *ngIf="dropdownOptions.length !== 0 && isValueSelected" #dropdown>
+  <div class="dropdown-options"
+       [class.selected]="selectedOptionIndex === i"
+       *ngFor="let titles of dropdownOptions; let i = index"
+       (click)="selectOptionOnMouseClick(i)">
+    <p class="dropdown-options-text">{{titles}}</p>
+    <hr>
+  </div>
+</div>
+
+
+
+
