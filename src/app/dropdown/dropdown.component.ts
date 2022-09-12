@@ -18,10 +18,6 @@ export class DropdownComponent implements AfterViewInit, OnDestroy {
 
   unsubscribe$ = new Subject<void>();
 
-  get isValueSelected(): boolean {
-    return this.dropdownOptions.length > 0;
-  }
-
   constructor() { }
 
   ngAfterViewInit(): void {
@@ -81,7 +77,6 @@ export class DropdownComponent implements AfterViewInit, OnDestroy {
         tap(() => {
           this.selectedValue = this.dropdownOptions[this.selectedOptionIndex];
           this.selectedOptionValue.emit(this.selectedValue);
-          this.dropdownOptions = [];
         }),
         takeUntil(this.unsubscribe$)
       ).subscribe();
@@ -91,7 +86,6 @@ export class DropdownComponent implements AfterViewInit, OnDestroy {
     this.selectedOptionIndex = optionIndex;
     this.selectedValue = this.dropdownOptions[optionIndex];
     this.selectedOptionValue.emit(this.selectedValue);
-    this.dropdownOptions = [];
   }
 
   ngOnDestroy(): void {

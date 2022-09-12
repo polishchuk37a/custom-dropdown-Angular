@@ -2,7 +2,15 @@
   <div class="search-container">
     <input [formControl]="searchField" type="text" placeholder="Write something" class="search-field" [value]="selectedValueFromDropdown">
 
-    <dropdown [dropdownOptions]="options" (selectedOptionValue)="getSelectedValueFromDropdown($event)"></dropdown>
+    <div class="dropdown-container" *ngIf="dropdownVisibility">
+      <dropdown class="dropdown" *ngIf="options.length !== 0" [dropdownOptions]="options" (selectedOptionValue)="setSelectedOption($event)"></dropdown>
+    </div>
+
+    <div class="no-results" *ngIf="resultsNotFound">
+      <div class="no-results-block">
+        <p class="no-results-text">No results</p>
+      </div>
+    </div>
   </div>
 </div>
 
